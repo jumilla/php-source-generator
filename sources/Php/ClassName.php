@@ -12,6 +12,8 @@ class ClassName
     protected $name;
 
     /**
+     * the Constructor.
+     *
      * @param string $name
      */
     public function __construct($name)
@@ -20,6 +22,8 @@ class ClassName
     }
 
     /**
+     * Get class name.
+     *
      * @return string
      */
     public function name()
@@ -28,6 +32,9 @@ class ClassName
     }
 
     /**
+     * Get class string.
+     * use PHP 5.5 notation.
+     *
      * @return string
      */
     public function __toString()

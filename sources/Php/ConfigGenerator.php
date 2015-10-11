@@ -2,9 +2,11 @@
 
 namespace Jumilla\Generators\Php;
 
-class PhpConfigGenerator
+class ConfigGenerator
 {
     /**
+     * Generate php source text.
+     *
      * @param array $config
      *
      * @return static
@@ -27,13 +29,15 @@ class PhpConfigGenerator
     protected $indent;
 
     /**
+     * Generate php source text.
+     *
      * @param array $config
      *
      * @return string
      */
     public function generate(array $config)
     {
-        $this->text = "<?php\n\nreturn [\n";
+        $this->text = '<?php'.PHP_EOL.PHP_EOL.'return ['.PHP_EOL;
         $this->indent = 0;
 
         $this->generateArray($config);
@@ -44,6 +48,8 @@ class PhpConfigGenerator
     }
 
     /**
+     * Generate php array elements
+     *
      * @param array $config
      */
     private function generateArray(array $config)
@@ -98,12 +104,14 @@ class PhpConfigGenerator
     }
 
     /**
+     * Write a source line.
+     *
      * @param string $line
      */
     private function writeLine($line)
     {
         $this->text .= str_repeat(' ', $this->indent * 4);
         $this->text .= $line;
-        $this->text .= "\n";
+        $this->text .= PHP_EOL;
     }
 }
