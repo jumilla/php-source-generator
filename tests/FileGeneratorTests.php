@@ -195,13 +195,10 @@ class FileGeneratorTests extends TestCase
     {
         try {
             $this->generator->file('bar')->source('Class1.php');
+            Assert::failure();
         } catch (FileNotFoundException $ex) {
             Assert::success();
-
-            return;
         }
-
-        Assert::failure();
     }
 
     public function test_templateMethod()
@@ -226,13 +223,10 @@ class FileGeneratorTests extends TestCase
 
         try {
             $this->generator->file('bar')->template('Class1.php', $arguments);
+            Assert::failure();
         } catch (FileNotFoundException $ex) {
             Assert::success();
-
-            return;
         }
-
-        Assert::failure();
     }
 
     public function test_gitKeepFileMethod_noArgument()
