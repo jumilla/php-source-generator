@@ -39,6 +39,10 @@ class FileGenerator
      */
     public static function make($outbox_root_path, $stubbox_root_path)
     {
+        if (!is_dir($outbox_root_path)) {
+            mkdir($outbox_root_path, 0755, true);
+        }
+
         $outbox = FilesystemFactory::local($outbox_root_path);
 
         $stubbox = FilesystemFactory::local($stubbox_root_path);
