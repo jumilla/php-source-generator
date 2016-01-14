@@ -241,11 +241,11 @@ class FileGenerator
      * Generate PHP config file.
      *
      * @param string $path
-     * @param array $config
+     * @param string $namespace
      */
-    public function phpConfigFile($path, array $config = [])
+    public function phpConfigFile($path, array $config = [], $namespace = null)
     {
-        $this->file($path)->text(Php\ConfigGenerator::generateText($config));
+        $this->file($path)->text(Php\ConfigGenerator::generateText($config, $namespace));
     }
 
     /**

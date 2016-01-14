@@ -8,14 +8,15 @@ class ConfigGenerator
      * Generate php source text.
      *
      * @param array $config
+     * @param string $namespace
      *
      * @return static
      */
-    public static function generateText(array $config)
+    public static function generateText(array $config, $namespace = null)
     {
         $instance = new static();
 
-        return $instance->generate($config);
+        return $instance->generate($config, $namespace);
     }
 
     /**
@@ -32,13 +33,21 @@ class ConfigGenerator
      * Generate php source text.
      *
      * @param array $config
+     * @param string $namespace
      *
      * @return string
      */
-    public function generate(array $config)
+    public function generate(array $config, $namespace = null)
     {
-        $this->text = '<?php'.PHP_EOL.PHP_EOL.'return ['.PHP_EOL;
+        $this->writeLine('<?php'.PHP_EOL);
+
+        if ($namespace) {
+            $this->writeLine("namespace $namespace;".PHP_EOL);
+        }
+
         $this->indent = 0;
+
+        $this->writeLine('return [');
 
         $this->generateArray($config);
 
