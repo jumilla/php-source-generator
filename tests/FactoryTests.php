@@ -13,7 +13,7 @@ class FactoryTests extends TestCase
 
         Assert::true($filesystem instanceof FilesystemInterface, 'must FilesystemInterface');
         Assert::true($filesystem->getAdapter() instanceof LocalAdapter, 'must LocalAdapter');
-        Assert::same(realpath('sandbox/foo').'/', $filesystem->getAdapter()->getPathPrefix());
+        Assert::same('sandbox/foo/', $filesystem->getAdapter()->getPathPrefix());
     }
 
     public function test_makeFileGenerator()
